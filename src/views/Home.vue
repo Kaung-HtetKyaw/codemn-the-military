@@ -1,18 +1,82 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <v-container>
+      <v-row>
+        <v-col cols="12" sm="12">
+          <div
+            class="width-100 red darken-1 rounded-lg hero d-flex justify-center align-center white--text"
+          >
+            <h1 class="text-h5 font-weight-bold text-md-h4">
+              စစ်အစိုးရစနစ် ကျရှုံးပါစေ
+            </h1>
+          </div>
+        </v-col>
+        <v-col cols="12" sm="12" class="my-4">
+          <h2 class="text-center font-weight-bold text-subtitle-1 text-md-h5">
+            စစ်တပ် အသိုင်းအဝိုင်းမှ လုပ်ငန်းများ
+          </h2>
+        </v-col>
+        <v-col cols="12" sm="12" md="6">
+          <router-link :to="{ name: 'Products', params: { type: 'most-used' } }"
+            ><div
+              class="hero--secondary deep-purple darken-2 white--text rounded-lg d-flex justify-center align-center"
+            >
+              <h3>လူသုံးများ</h3>
+            </div></router-link
+          >
+        </v-col>
+        <v-col cols="12" sm="12" md="6">
+          <router-link :to="{ name: 'Products', params: { type: 'popular' } }">
+            <div
+              class="hero--secondary teal darken-3 white--text rounded-lg d-flex justify-center align-center"
+            >
+              <h3>လူသိများ</h3>
+            </div></router-link
+          >
+        </v-col>
+        <v-col cols="12" sm="12" md="6">
+          <router-link :to="{ name: 'Products', params: { type: 'casual' } }">
+            <div
+              class="hero--secondary brown white--text rounded-lg d-flex justify-center align-center"
+            >
+              <h3>တစ်ခါတစ်ရံသုံး</h3>
+            </div></router-link
+          >
+        </v-col>
+        <v-col cols="12" sm="12" md="6">
+          <router-link :to="{ name: 'Products', params: { type: 'barely' } }">
+            <div
+              class="hero--secondary purple darken-3 white--text rounded-lg d-flex justify-center align-center"
+            >
+              <h3>အသုံးနည်း</h3>
+            </div></router-link
+          >
+        </v-col>
+        <v-col cols="12" sm="12" md="12">
+          <router-link :to="{ name: 'News' }">
+            <div
+              class="hero--secondary black white--text rounded-lg d-flex justify-center align-center"
+            >
+              <h3>နောက်ဆုံးရ သတင်းများ</h3>
+            </div></router-link
+          >
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld
-  }
+  components: {},
 };
 </script>
+<style lang="scss" scoped>
+.hero {
+  height: 30vh;
+  &--secondary {
+    height: 20vh;
+  }
+}
+</style>
