@@ -1,0 +1,127 @@
+
+
+body
+  font-family: "Merriweather"
+  font-weight: 400
+  background-color: #edf3ff!important
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 
+  font-family: "Work Sans", sans-serif
+  font-weight: 800
+
+blockquote 
+  margin: 0
+  padding-left: 1.4rem
+  border-left: 4px solid #dadada
+
+code,pre
+  display:block
+  overflow-x:auto
+  background-color:#282c34!important
+  color:#abb2bf!important
+  padding:2em
+  font-size: 17px
+
+.button 
+  font-family: "Work Sans", sans-serif
+  font-weight: 700
+  font-size: 15px
+  letter-spacing: 1px
+
+a
+  
+  text-decoration: none!important
+
+
+  
+.merriweather
+  font-family: "Merriweather", serif !important
+.workssan
+  font-family: "Work Sans", sans-serif !important
+.concertone
+  font-family: 'Concert One', cursive !important
+
+//utils
+.width-100
+  width:100%
+.width-50
+  width:50%
+.rotate-45
+  transform: rotate(45deg)
+
+  // transitions
+.fade-move,
+.fade-enter-active,
+.fade-leave-active 
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1)
+
+
+.fade-enter 
+  opacity: 0
+
+.fade-leave-active 
+  opacity: 0
+
+.vertical-move,
+.vertical-enter-active,
+.vertical-leave-active 
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1)
+
+
+.vertical-enter 
+  opacity: 0
+  transform: translate(0, 30px)
+
+.vertical-leave-active 
+  opacity: 0
+  transform: translate(0, -30px)
+
+.slide-left-enter,
+.slide-right-leave-to 
+  opacity: 0
+  transform: translate(30px, 0)
+
+
+.slide-left-leave-to,
+.slide-right-enter 
+  opacity: 0
+  transform: translate(-30px, 0)
+
+
+.vertical-enter 
+  opacity: 0
+  transform: translate(0, 30px)
+
+.vertical-leave-to 
+  opacity: 0
+  transform: translate(0px, -30px)
+
+
+.item-move,
+.item-enter-active,
+.item-leave-active 
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1)
+
+
+.item-enter 
+  transform: translate(0, 30px)
+  opacity: 0
+
+
+.item-leave-active 
+  position: absolute
+  transform: translate(0, 30px)
+  opacity: 0
+
+//override vuetify styles
+.v-text-field.v-text-field--solo:not(.v-text-field--solo-flat)
+  > .v-input__control
+  > .v-input__slot 
+  box-shadow: none !important
+  padding: auto 0
