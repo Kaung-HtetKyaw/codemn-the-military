@@ -1,37 +1,60 @@
 <template>
-  <div class="news-card px-5 py-5 rounded-lg font-weight-bold">
+  <div
+    class="news-card px-5 py-5 rounded-lg font-weight-bold"
+    :class="{ active: !isOver, inactive: isOver }"
+  >
     <div>
-      <h5 class="text-body-1 font-weight-bold ">သံပုံးတီးရန်</h5>
+      <h5 class="text-body-1 font-weight-bold ">{{ event.title }}</h5>
     </div>
     <div class="my-2">
       <v-icon size="15" class="mr-2">mdi-clock-outline</v-icon>
-      <span class="text-caption">3 hrs ago</span>
+      <span class="text-caption">{{ timeAgo(event.startTime) }}</span>
     </div>
     <div>
       <p class="text-body-2  font-weight-bold text--secondary">
-        Plan B ကဘာလဲ ဘာညာနဲ့ ၇၂ နာရီနေလို့မှမထူးရင် Strike မယ်ဘာညာနဲ့ သွေးဆူမယ့်
-        လူတွေကိုပြောချင်တာက
+        {{ event.description }}
       </p>
     </div>
     <div class="my-2 d-flex justify-space-between">
       <div>
         <v-icon size="15" class="mr-2">mdi-pin-outline</v-icon>
-        <span class="text-caption">နေအိမ်</span>
+        <span class="text-caption">{{ event.location }}</span>
       </div>
       <div>
         <v-icon size="15" class="mr-2">mdi-clock-outline</v-icon>
-        <span class="text-caption">3 hrs ago</span>
+        <span class="text-caption">{{ timeAgo(event.startTime) }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { timeAgo } from "@/utils/time.js";
+export default {
+  props: {
+    event: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    isOver() {
+      return new Date(this.event.startTime) > Date.now();
+    },
+  },
+  methods: {
+    timeAgo(time) {
+      return timeAgo(new Date(time).getTime());
+    },
+  },
+};
 </script>
 
 <style style="scss" scoped>
-.news-card {
+.active {
   background: rgba(5, 255, 0, 0.21);
+}
+.inactive {
+  background: rgba(255, 0, 0, 0.38);
 }
 </style>

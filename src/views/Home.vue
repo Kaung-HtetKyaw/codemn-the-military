@@ -21,7 +21,7 @@
             ><div
               class="d-flex flex-column flex-md-row justify-center align-center hero--secondary deep-purple darken-2 white--text rounded-lg d-flex justify-center align-center"
             >
-              <v-icon color="white" size="50" class="pb-3"
+              <v-icon color="white" size="50" class="pb-3 mr-md-3"
                 >mdi-flag-outline</v-icon
               >
               <h3>လူသုံးများ</h3>
@@ -33,7 +33,7 @@
             <div
               class="d-flex flex-column flex-md-row justify-center align-center hero--secondary teal darken-3 white--text rounded-lg d-flex justify-center align-center"
             >
-              <v-icon color="white" size="50" class="pb-3"
+              <v-icon color="white" size="50" class="pb-3 mr-md-3"
                 >mdi-flag-outline</v-icon
               >
               <h3>လူသိများ</h3>
@@ -45,7 +45,7 @@
             <div
               class="d-flex flex-column flex-md-row justify-center align-center hero--secondary brown white--text rounded-lg d-flex justify-center align-center"
             >
-              <v-icon color="white" size="50" class="pb-3"
+              <v-icon color="white" size="50" class="pb-3 mr-md-3"
                 >mdi-flag-outline</v-icon
               >
               <h3>တစ်ခါတစ်ရံသုံး</h3>
@@ -57,7 +57,7 @@
             <div
               class="d-flex flex-column flex-md-row justify-center align-center hero--secondary purple darken-3 white--text rounded-lg d-flex justify-center align-center"
             >
-              <v-icon color="white" size="50" class="pb-3"
+              <v-icon color="white" size="50" class="pb-3 mr-md-3"
                 >mdi-flag-outline</v-icon
               >
               <h3>အသုံးနည်း</h3>
@@ -69,7 +69,9 @@
             <div
               class="d-flex flex-column flex-md-row justify-center align-center hero--secondary black white--text rounded-lg d-flex justify-center align-center"
             >
-              <v-icon color="black" class="white rounded-xl px-1 py-1 mb-3"
+              <v-icon
+                color="black"
+                class="white rounded-xl px-1 py-1 mb-3 mr-md-3"
                 >mdi-exclamation-thick</v-icon
               >
               <h3>နောက်ဆုံးရ သတင်းများ</h3>

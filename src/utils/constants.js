@@ -6,3 +6,7 @@ export const titleMap = {
   news: "သတင်းများ",
   events: "အစီအစဥ်များ",
 };
+
+export const location = {
+  home: "နေအိမ်",
+};
