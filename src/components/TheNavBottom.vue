@@ -5,8 +5,8 @@
     horizontal
     :value="value"
     color="red darken-1"
+    class="pt-3 px-2"
     grow
-    class="pt-2 pt-md-0"
   >
     <v-btn
       text

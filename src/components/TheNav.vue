@@ -4,7 +4,7 @@
       <v-btn icon to="/">
         <v-icon class="black--text font-weight-bold">mdi-arrow-left</v-icon>
       </v-btn>
-      <v-btn depressed text>
+      <v-btn depressed text :ripple="false">
         <span class="black--text text-body-1 font-weight-bold">
           {{ titleMap[`${title}`] ? titleMap[`${title}`] : "" }}</span
         >
