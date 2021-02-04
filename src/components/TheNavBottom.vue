@@ -62,7 +62,7 @@
     >
       <div class="d-flex justify-center">
         <v-icon>mdi-progress-question</v-icon>
-        <span class="px-2 d-none d-md-flex">သံစဥ်များ</span>
+        <span class="px-2 d-none d-md-flex">အကြောင်း</span>
       </div>
     </v-btn>
   </v-bottom-navigation>

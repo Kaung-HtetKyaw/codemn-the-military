@@ -18,7 +18,9 @@
     <div class="my-2 d-flex justify-space-between">
       <div>
         <v-icon size="15" class="mr-2">mdi-pin-outline</v-icon>
-        <span class="text-caption">{{ event.location }}</span>
+        <span class="text-caption">{{
+          event.location ? event.location : "နေရာမသတ်မှတ်ထား"
+        }}</span>
       </div>
       <div>
         <v-icon size="15" class="mr-2">mdi-clock-outline</v-icon>
