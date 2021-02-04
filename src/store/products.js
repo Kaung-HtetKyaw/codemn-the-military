@@ -7,15 +7,15 @@ export const state = {
   end: false,
 };
 export const mutations = {
-  FETCH_PRODUCTS(state, products, type) {
+  FETCH_PRODUCTS(state, { items, type }) {
     if (state.products.type !== type) {
       state.products.items = [];
       state.page = 1;
     }
-    state.products.items = products;
+    console.log(type);
+    state.products.items = items;
     state.products.type = type;
-    if (state.products.items.length > 0 && products.length == 0)
-      state.end = true;
+    if (state.products.items.length > 0 && items.length == 0) state.end = true;
   },
   INCREASE_PAGE(state) {
     state.page++;
@@ -29,7 +29,8 @@ export const actions = {
         `/products/${type}/?page=${state.page}&limit=${state.limit}&${query}`
       )
       .then((res) => {
-        commit("FETCH_PRODUCTS", res.data.data, type);
+        console.log(type);
+        commit("FETCH_PRODUCTS", { items: res.data.data, type });
         commit("INCREASE_PAGE");
         return res.data.data;
       })
