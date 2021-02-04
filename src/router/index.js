@@ -9,8 +9,10 @@ import store from "@/store/index.js";
 import productRoutes from "./products";
 import newsRoutes from "./news";
 import eventRoutes from "./events";
+
 // layouts
 import defaultLayout from "@/layouts/default.vue";
+import Layout from "@/layouts/header-included.vue";
 
 Vue.use(VueRouter);
 
@@ -32,7 +34,8 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
     meta: {
-      layout: defaultLayout,
+      layout: Layout,
+      title: "about",
     },
   },
   ...productRoutes,
@@ -61,7 +64,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  store.dispatch("ui/setPageTitle", "");
+  const title = to.matched.map((el) => el.meta.title);
+  store.dispatch("ui/setPageTitle", title[0] || "");
   next();
 });
 

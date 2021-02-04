@@ -29,7 +29,9 @@
           >
         </v-col>
         <v-col cols="12" sm="12" md="6">
-          <router-link :to="{ name: 'Products', params: { type: 'popular' } }">
+          <router-link
+            :to="{ name: 'Products', params: { type: 'most-known' } }"
+          >
             <div
               class="d-flex flex-column flex-md-row justify-center align-center hero--secondary teal darken-3 white--text rounded-lg d-flex justify-center align-center"
             >
@@ -41,7 +43,9 @@
           >
         </v-col>
         <v-col cols="12" sm="12" md="6">
-          <router-link :to="{ name: 'Products', params: { type: 'casual' } }">
+          <router-link
+            :to="{ name: 'Products', params: { type: 'less-used' } }"
+          >
             <div
               class="d-flex flex-column flex-md-row justify-center align-center hero--secondary brown white--text rounded-lg d-flex justify-center align-center"
             >
@@ -53,7 +57,9 @@
           >
         </v-col>
         <v-col cols="12" sm="12" md="6">
-          <router-link :to="{ name: 'Products', params: { type: 'barely' } }">
+          <router-link
+            :to="{ name: 'Products', params: { type: 'often-used' } }"
+          >
             <div
               class="d-flex flex-column flex-md-row justify-center align-center hero--secondary purple darken-3 white--text rounded-lg d-flex justify-center align-center"
             >

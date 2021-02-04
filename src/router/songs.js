@@ -1,12 +1,12 @@
 import Layout from "@/layouts/header-included.vue";
 export default [
   {
-    path: "/events",
-    name: "Events",
+    path: "/songs",
+    name: "Songs",
     component: () =>
-      import(/* webpackChunkName: "events" */ "../views/events/events.vue"),
+      import(/* webpackChunkName: "songs" */ "../views/songs/index.vue"),
     meta: {
-      title: "events",
+      title: "songs",
       layout: Layout,
     },
   },
