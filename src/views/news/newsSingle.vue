@@ -3,7 +3,7 @@
     <v-row class="loading" v-if="loading" justify="center" align="center">
       <v-progress-circular indeterminate color="red"></v-progress-circular>
     </v-row>
-    <v-row>
+    <v-row v-else>
       <v-col cols="12" sm="12">
         <h1 class="text-h5 font-weight-bold text-center myanmar-sans-pro">
           {{ singleNews.title }}
@@ -43,7 +43,10 @@ export default {
     },
   },
   async created() {
-    if (!this.singleNews) {
+    if (
+      !this.singleNews ||
+      this.singleNews.uniqueId !== this.$route.params.id
+    ) {
       await this.fetchSingleNews();
     }
   },
