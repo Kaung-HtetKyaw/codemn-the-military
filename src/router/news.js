@@ -1,5 +1,4 @@
 import Layout from "@/layouts/header-included.vue";
-import store from "@/store/index.js";
 export default [
   {
     path: "/news",
@@ -9,10 +8,6 @@ export default [
     meta: {
       title: "news",
       layout: Layout,
-    },
-    beforeEnter(to, from, next) {
-      store.dispatch("ui/setPageTitle", "news");
-      next();
     },
   },
   {

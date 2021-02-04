@@ -11,36 +11,59 @@
     <v-btn
       text
       exact
-      class="text-caption font-weight-bold text-md-body-1 rounded-lg"
+      class="text-caption font-weight-bold text-md-body-1 rounded-lg "
       to="/"
     >
-      <span>ပင်မ</span>
+      <div class="d-flex justify-center">
+        <v-icon>mdi-home-outline</v-icon>
+        <span class="px-2 d-none d-md-flex">ပင်မ</span>
+      </div>
     </v-btn>
 
     <v-btn
       text
       exact
-      class="text-caption font-weight-bold text-md-body-1 rounded-lg"
+      class="text-caption font-weight-bold text-md-body-1 rounded-lg px-2"
       :to="{ name: 'News' }"
     >
-      <span>သတင်းများ</span>
+      <div class="d-flex justify-center">
+        <v-icon>mdi-exclamation-thick</v-icon>
+        <span class="px-2 d-none d-md-flex">သတင်းများ</span>
+      </div>
     </v-btn>
 
     <v-btn
       text
       exact
-      class="text-caption font-weight-bold text-md-body-1 rounded-lg"
+      class="text-caption font-weight-bold text-md-body-1 rounded-lg px-2"
       :to="{ name: 'Events' }"
     >
-      <span>အစီအစဥ်များ</span>
+      <div class="d-flex justify-center">
+        <v-icon>mdi-calendar-check-outline</v-icon>
+        <span class="px-2 d-none d-md-flex">အစီအစဥ်များ</span>
+      </div>
     </v-btn>
     <v-btn
       text
       exact
-      class="text-caption font-weight-bold text-md-body-1 rounded-lg"
-      :to="{ name: 'Products', params: { type: 'most-used' } }"
+      class="text-caption font-weight-bold text-md-body-1 rounded-lg px-2"
+      :to="{ name: 'Products-Type' }"
     >
-      <span>ထုန်ကုန်များ</span>
+      <div class="d-flex justify-center">
+        <v-icon>mdi-skull-crossbones-outline</v-icon>
+        <span class="px-2 d-none d-md-flex">လုပ်ငန်းများ</span>
+      </div>
+    </v-btn>
+    <v-btn
+      text
+      exact
+      class="text-caption font-weight-bold text-md-body-1 rounded-lg px-2"
+      :to="{ name: 'About' }"
+    >
+      <div class="d-flex justify-center">
+        <v-icon>mdi-progress-question</v-icon>
+        <span class="px-2 d-none d-md-flex">သံစဥ်များ</span>
+      </div>
     </v-btn>
   </v-bottom-navigation>
 </template>

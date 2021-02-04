@@ -1,41 +1,23 @@
 <template>
   <v-container>
+    <v-row class="loading" v-if="loading" justify="center" align="center">
+      <v-progress-circular indeterminate color="red"></v-progress-circular>
+    </v-row>
     <v-row>
       <v-col cols="12" sm="12">
-        <h1 class="text-h5 font-weight-bold text-center">
-          မင်းအောင်လှိုင် လုပ်ကြံခံရ
+        <h1 class="text-h5 font-weight-bold text-center myanmar-sans-pro">
+          {{ singleNews.title }}
         </h1>
       </v-col>
       <v-col cols="12" sm="12" class="px-8 py-0">
         <div class="my-2">
           <v-icon size="15" class="mr-2">mdi-clock-outline</v-icon>
-          <span class="text-caption black--text">3 hrs ago</span>
+          <span class="text-caption black--text">{{ timeAgo }}</span>
         </div>
       </v-col>
       <v-col cols="12" sm="12">
         <div class="news__content px-3 font-weight-bold">
-          Feb 1 ရက်နေ့ကို ကွန်ပျူတာပညာဒါနသင်တန်းလေး
-          ပြန်စမယ်လို့ရည်ရွယ်ထားတာလေ..။ လကုန်ရက်ကမှ စက်တွေကို Windows
-          အသစ်ပြန်တင် Software တွေပြန်သွင်းထားတာ။
-          ခုကလေးတွေလဲကျောင်းပိတ်ပြီးအားနေကြလို့ ကိုယ်အားတဲ့အချိန်လေးမှာ
-          ကွန်ပျူတာ(အခမဲ့)သင်ပေးမလို့လေ..။ ဟိုးအရင်ကိုယ်တွေငယ်ငယ်တုန်းက
-          ကျောင်းမှာ ကွန်ပျူတာသင်(ကိုင်)ရဖို့ဆိုတာ မဟာ့မဟာ
-          အခွင့်အရေးကြီးတစ်ခုလိုပဲ ..။ ကျောင်းသားတိုင်းကွန်ပျူတာခန်းထဲမဝင်ရသလို,
-          ကွန်ပျူတာသင်ရဖို့ဆိုတာ ငယ်ငယ်တုန်းက ကျောင်းသားတိုင်းရဲ့
-          ကြီးကျယ်ခမ်းနားတဲ့အိပ်မက်ကြီးတစ်ခုဆိုတာ
-          ငယ်ဘဝဖြတ်သန်းခဲ့ရတဲ့သူတွေအကုန်သိတယ်။ အဲ့တာကြောင့် ခုခေတ်ကလေးတွေကို
-          ပွင့်လင်းလာတဲ့လူ့ဘောင်ခေတ်သစ်နဲ့အညီ ကိုယ်တွေငယ်တုန်းက မသင်ခဲ့ရတဲ့
-          ကွန်ပျူတာကို သိအောင်တတ်အောင် အခြေခံကနေ စပြီး သင်ပေးမလို့လေဗျာ...။
-          ခုတော့ ကလေးတွေမျက်နှာမကြည့်ပဲ ဒီကွန်ပျူတာလေးတွေကိုလာသိမ်းကြတယ်တဲ့လား?
-          အဲ့ Computer ထဲမှာလဲ ရုံးနဲ့ပတ်သက်တဲ့ ဘာ Dataမှမရှိသလို,
-          စုတ်နေတဲ့ကွန်ပျူတာလေးတွေကိုတောင်ပြုပြင်ထိမ်းသိမ်းပြီး
-          သင်ကြားပေးနေတာဗျ! ကွန်ပျူတာသင်ရတော့မယ်ဆိုပြီး ပျော်နေကြတဲ့
-          ကလေးတွေရဲ့မျက်နှာကို လူကြီးမင်းတို့မြင်ကြရဲ့လား? ခင်ဗျားတို့တွေရဲ့
-          ကိုယ်ကျိုးကြည့်ပြီး ပြည်သူ့မျက်နှာကိုမှ
-          မငဲ့ကွက်တဲ့လူတွေကိုပြည်သူတွေမုန်းတာ အဆန်းမဟုတ်တော့ဘူး! မကူညီချင်နေပါ
-          မနှောင့်ယှက်ပါနဲ့..။ တစ်ကယ်ပြောတာပါ
-          အဲ့ကွန်ပျူတာအစုတ်လေးတွေကိုပြန်ပေးပါလို့ပဲ တောင်းဆိုပါတယ်ခင်ဗျ!
-          ကျွန်တော်သားငယ်ပါ
+          {{ singleNews.content }}
         </div>
       </v-col>
     </v-row>
@@ -43,13 +25,61 @@
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+import store from "@/store/index.js";
+import { timeAgo } from "@/utils/time.js";
+export default {
+  data() {
+    return {
+      loading: false,
+    };
+  },
+  computed: {
+    ...mapState({
+      singleNews: (state) => state.news.singleNews,
+    }),
+    timeAgo() {
+      return timeAgo(new Date(this.singleNews.createdAt).getTime());
+    },
+  },
+  async created() {
+    if (!this.singleNews) {
+      await this.fetchSingleNews();
+    }
+  },
+  methods: {
+    async fetchSingleNews() {
+      const vm = this;
+      vm.loading = true;
+      await store
+        .dispatch("news/fetchSingleNews", this.$route.params.id)
+        .then((res) => {
+          vm.loading = false;
+          console.log(res);
+        })
+        .catch((e) => {
+          vm.loading = false;
+          console.log(e);
+        });
+    },
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-.news {
-  &__content {
-    line-height: 2.5;
-  }
+<style lang="css" scoped>
+@font-face {
+  font-family: myanmar-sans-pro;
+  src: url("/assets/fonts/MyanmarSansPro-Regular.ttf");
+}
+.news__content {
+  font-family: "myanmar-sans-pro";
+  line-height: 2.5;
+}
+.myanmar-sans-pro {
+  font-family: "myanmar-sans-pro" !important;
+}
+.loading {
+  width: 100%;
+  height: 80vh;
 }
 </style>
