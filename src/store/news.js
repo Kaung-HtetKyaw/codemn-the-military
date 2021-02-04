@@ -34,6 +34,11 @@ export const actions = {
       });
   },
   async fetchSingleNews({ commit }, id) {
+    // check in the existing news
+    const currentNews = state.news.find((el) => el.uniqueId === id);
+    if (currentNews) {
+      return currentNews;
+    }
     return await axios()
       .get(`/new/${id}`)
       .then((res) => {
