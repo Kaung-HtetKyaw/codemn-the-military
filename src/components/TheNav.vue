@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar app color="white" flat fixed class=" px-0 px-md-16 ">
-      <v-btn icon to="/">
+      <v-btn icon @click="goBack">
         <v-icon class="black--text font-weight-bold">mdi-arrow-left</v-icon>
       </v-btn>
       <v-btn depressed text :ripple="false">
@@ -29,7 +29,11 @@ export default {
       title: (state) => state.ui.title,
     }),
   },
-
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+  },
   watch: {
     group() {
       this.drawer = false;
