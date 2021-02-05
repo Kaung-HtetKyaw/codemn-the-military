@@ -20,7 +20,9 @@
           class="product d-flex flex-row justify-space-between align-center black white--text rounded-lg px-3 py-3"
         >
           <div class="text-capitalize">{{ product.productName }}</div>
-          <div class="text-caption">{{ product._industry.name }}</div>
+          <div class="text-caption">
+            {{ product._industry ? product._industry.name : "" }}
+          </div>
         </div>
       </v-col>
       <v-col
@@ -56,7 +58,9 @@ export default {
       this.products_detail.items.length === 0
     ) {
       await this.loadProducts();
+      return;
     }
+    this.products = [...this.products_detail.items];
   },
   methods: {
     async loadProducts() {
@@ -66,6 +70,8 @@ export default {
         .dispatch("products/fetchProducts", vm.$route.params.type)
         .then(() => {
           vm.products = [...vm.products_detail.items];
+          console.log(vm.products_detail.items);
+          console.log(vm.products);
           vm.loading = false;
         })
         .catch((e) => {
