@@ -37,15 +37,14 @@ export default {
   computed: {
     ...mapState({
       singleNews: (state) => state.news.singleNews,
+      allNews: (state) => state.news.news,
     }),
     timeAgo() {
       return timeAgo(new Date(this.singleNews.createdAt).getTime());
     },
   },
   async created() {
-    if (!this.singleNews) {
-      await this.fetchSingleNews();
-    }
+    await this.fetchSingleNews();
   },
   methods: {
     async fetchSingleNews() {
@@ -53,13 +52,11 @@ export default {
       vm.loading = true;
       await store
         .dispatch("news/fetchSingleNews", this.$route.params.id)
-        .then((res) => {
+        .then(() => {
           vm.loading = false;
-          console.log(res);
         })
-        .catch((e) => {
+        .catch(() => {
           vm.loading = false;
-          console.log(e);
         });
     },
   },

@@ -37,7 +37,8 @@ export const actions = {
     // check in the existing news
     const currentNews = state.news.find((el) => el.uniqueId === id);
     if (currentNews) {
-      return currentNews;
+      commit("FETCH_SINGLE_NEWS", currentNews);
+      return;
     }
     return await axios()
       .get(`/new/${id}`)
