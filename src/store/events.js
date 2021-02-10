@@ -21,7 +21,6 @@ export const actions = {
     return await axios()
       .get(`/events?page=${state.page}&limit=${state.limit}&${query}`)
       .then((res) => {
-        console.log(res.data);
         commit("FETCH_EVENTS", res.data.data);
         commit("INCREASE_PAGE");
         return res.data.data;
