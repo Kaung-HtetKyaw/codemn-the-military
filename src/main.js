@@ -11,7 +11,7 @@ Vue.config.productionTip = false;
 Vue.use(VueObserveVisibility);
 
 Vue.use(VueAnalytics, {
-  id: "UA-189414101-1",
+  id: "UA-189414107-1",
   router,
 });
 
