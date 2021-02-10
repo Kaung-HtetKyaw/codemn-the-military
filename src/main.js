@@ -11,7 +11,7 @@ Vue.config.productionTip = false;
 Vue.use(VueObserveVisibility);
 
 Vue.use(VueAnalytics, {
-  id: "UA-189414107-1",
+  id: process.env.VUE_APP_GOOGLE_ANALYTICS_ID,
   router,
 });
 
