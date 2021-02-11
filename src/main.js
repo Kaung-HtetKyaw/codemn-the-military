@@ -10,9 +10,15 @@ import VueAnalytics from "vue-analytics";
 Vue.config.productionTip = false;
 Vue.use(VueObserveVisibility);
 
+// const isProd = process.env.NODE_ENV === "production";
+
 Vue.use(VueAnalytics, {
   id: process.env.VUE_APP_GOOGLE_ANALYTICS_ID,
   router,
+  // debug: {
+  //   enabled: !isProd,
+  //   sendHitTask: isProd,
+  // },
 });
 
 new Vue({

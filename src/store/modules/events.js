@@ -1,4 +1,5 @@
 import axios from "@/services/axios.js";
+import { showNoti } from "@/utils/noti.js";
 export const namespaced = true;
 export const state = {
   events: [],
@@ -25,8 +26,8 @@ export const actions = {
         commit("INCREASE_PAGE");
         return res.data.data;
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
+        showNoti("error", "Something went wrong");
       });
   },
 };

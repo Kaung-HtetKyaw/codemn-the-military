@@ -1,4 +1,5 @@
 import axios from "@/services/axios.js";
+import { showNoti } from "@/utils/noti.js";
 export const namespaced = true;
 export const state = {
   news: [],
@@ -29,8 +30,8 @@ export const actions = {
         commit("INCREASE_PAGE");
         return res.data.data;
       })
-      .catch((e) => {
-        console.log(e.response);
+      .catch(() => {
+        showNoti("error", "Something went wrong");
       });
   },
   async fetchSingleNews({ commit }, id) {
@@ -46,8 +47,8 @@ export const actions = {
         commit("FETCH_SINGLE_NEWS", res.data.data);
         return res.data.data;
       })
-      .catch((e) => {
-        console.log(e.response);
+      .catch(() => {
+        showNoti("error", "Something went wrong");
       });
   },
 };

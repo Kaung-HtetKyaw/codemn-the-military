@@ -1,4 +1,5 @@
 import axios from "@/services/axios.js";
+import { showNoti } from "@/utils/noti.js";
 export const namespaced = true;
 export const state = {
   products: { items: [] },
@@ -29,13 +30,12 @@ export const actions = {
         `/products/${type}/?page=${state.page}&limit=${state.limit}&${query}`
       )
       .then((res) => {
-        console.log(type);
         commit("FETCH_PRODUCTS", { items: res.data.data, type });
         commit("INCREASE_PAGE");
         return res.data.data;
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(() => {
+        showNoti("error", "Something went wrong");
       });
   },
 };
