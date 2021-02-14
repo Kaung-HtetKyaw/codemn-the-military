@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 
 // dep
-import NProgress from "nprogress";
 import store from "@/store/index.js";
 //routes
 import productRoutes from "./products";
@@ -63,14 +62,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  NProgress.start();
   const title = to.matched.map((el) => el.meta.title);
   store.dispatch("ui/setPageTitle", title[0] || "");
   next();
-});
-
-router.afterEach(() => {
-  NProgress.done();
 });
 
 export default router;

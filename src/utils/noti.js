@@ -1,4 +1,3 @@
-import NProgress from "nprogress";
 import store from "@/store/index.js";
 
 /*
@@ -16,7 +15,7 @@ export function showNoti(type, message, to, next) {
     },
     { root: true }
   );
-  NProgress.done();
+
   // got to the route if provided
   if (to && next) {
     next(to);
